@@ -1,0 +1,177 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+      integrity="sha384-GLhlTQ8iRABdZLl6O3oVMWSktQOp6b7In1Zl3/Jr59b6EGGoI1aFkw7cmDA6j6gD"
+      crossorigin="anonymous"
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amaranth:ital,wght@0,400;0,700;1,400;1,700&family=Montserrat+Alternates:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Ubuntu:ital,wght@0,300;0,400;0,500;0,700;1,300;1,400;1,500;1,700&display=swap"
+      rel="stylesheet"
+    />
+    <link href="src/style.css" rel="stylesheet" type="text/css" />
+    <script src="src/app.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/axios@1.1.2/dist/axios.min.js"></script>
+    <title>Weather App2</title>
+  </head>
+  <body>
+    <div class="container">
+      <form>
+        <div class="searchForm">
+          <input
+            type="text"
+            class="search-form"
+            placeholder="Choose your city"
+            id="your-city"
+            autocomplete="off"
+            autofocus="on"
+          />
+          <button type="submit" class="btn btn-primary" id="search-button">
+            Search
+          </button>
+          <button type="submit" class="btn btn-primary" id="current-button">
+            Current
+          </button>
+        </div>
+      </form>
+      <h1>
+        <div class="heading" id="city-name">Oslo</div>
+      </h1>
+      <h2>
+        <div class="date" id="current-date">Thursday 23.February</div>
+      </h2>
+      <h3>
+        <div class="row">
+          <div class="col-6 col-md-4">
+            <span class="weather" id="current-weather"
+              >-3 ⛅ partly cloudy</span
+            >
+          </div>
+          <div class="col-6 col-md-4">
+            <span class="weather" id="current-wind">wind speed: 1 m/s</span>
+          </div>
+          <div class="col-6 col-md-4">
+            <span class="weather" id="current-humidity">humidity: 88%</span>
+          </div>
+        </div>
+      </h3>
+      <hr />
+      <div class="futureWeather">
+        <div class="row" id="day-0">
+          <div class="col">
+            <span class="day" id="day-zero">Today</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="temperature-zero">H:2 L:-4</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="weather-zero">🌨️ Snowing </span>
+          </div>
+          <div class="col">
+            <span class="weather" id="wind-zero">3 m/s</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="humidity-zero">88%</span>
+          </div>
+        </div>
+
+        <div class="row" id="day-1">
+          <div class="col">
+            <span class="day" id="day-one">Friday</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="temperature-one">H:2 L:-4</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="weather-one">☁️ Cloudy </span>
+          </div>
+          <div class="col">
+            <span class="weather" id="wind-one">3 m/s</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="humidity-one">88%</span>
+          </div>
+        </div>
+
+        <div class="row" id="day-2">
+          <div class="col">
+            <span class="day" id="day-two">Saturday</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="temperature-two">H:2 L:-4</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="weather-two">☀️ Sunny </span>
+          </div>
+          <div class="col">
+            <span class="weather" id="wind-two">2 m/s</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="humidity-two">50%</span>
+          </div>
+        </div>
+
+        <div class="row" id="day-3">
+          <div class="col">
+            <span class="day" id="day-three">Sunday</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="temperature-three">H:2 L:-4</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="weather-three">⛅ Partly cloudy </span>
+          </div>
+          <div class="col">
+            <span class="weather" id="wind-three">3 m/s</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="humidity-three">85%</span>
+          </div>
+        </div>
+
+        <div class="row" id="day-4">
+          <div class="col">
+            <span class="day" id="day-four">Monday</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="temperature-four">H:2 L:-4</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="weather-four">☁️ Cloudy </span>
+          </div>
+          <div class="col">
+            <span class="weather" id="wind-four">3 m/s</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="humidity-four">88%</span>
+          </div>
+        </div>
+
+        <div class="row" id="day-5">
+          <div class="col">
+            <span class="day" id="day-five">Tuesday</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="temperature-five">H:2 L:-4</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="weather-five">☁️ Cloudy </span>
+          </div>
+          <div class="col">
+            <span class="weather" id="wind-five">3 m/s</span>
+          </div>
+          <div class="col">
+            <span class="weather" id="humidity-five">88%</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </body>
+</html>

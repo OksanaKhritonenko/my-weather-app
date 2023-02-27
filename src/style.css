@@ -1,0 +1,19 @@
+.container {
+  background: radial-gradient(
+    621px at 25.3% 13.8%,
+    rgb(255, 255, 255) 0%,
+    rgb(234, 236, 255) 90%
+  );
+  margin: 40px auto;
+  padding: 45px 45px 15px;
+  width: 800px;
+  border-radius: 30px;
+  color: #0881a3;
+  font-family: "Amaranth", sans-serif;
+}
+.futureWeather {
+  text-align: center;
+}
+h3 {
+  text-align: left;
+}
