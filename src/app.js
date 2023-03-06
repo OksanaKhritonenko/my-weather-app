@@ -55,6 +55,9 @@ function getDataFromUrl(apiUrl) {
       setTemperature(response.data.main.temp);
       setCity(response.data.name);
       setDate(response.data.dt);
+      setWeather(response.data.weather[0].description);
+      setHumidity(response.data.main.humidity);
+      setWind(response.data.wind.speed);
     })
     .catch(showError);
 }
@@ -95,6 +98,22 @@ function setTemperature(temp) {
   let temperature = document.querySelector("#current-temperature");
   temperature.innerHTML = Math.round(temp);
 }
+
+function setWeather(description) {
+  let newWeather = document.querySelector("#current-weather");
+  newWeather.innerHTML = description;
+}
+
+function setHumidity(humidity) {
+  let newHumidity = document.querySelector("#current-humidity");
+  newHumidity.innerHTML = humidity;
+}
+
+function setWind(wind) {
+  let windSpeed = document.querySelector("#current-wind");
+  windSpeed.innerHTML = Math.round(wind);
+}
+
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchCity);
 function showCurrent(event) {
