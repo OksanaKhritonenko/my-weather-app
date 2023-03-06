@@ -21,8 +21,10 @@
 h3 {
   text-align: left;
 }
-p,
-a {
+p {
   color: #0881a3;
   font-size: small;
+}
+a {
+  color: #0881a3;
 }
