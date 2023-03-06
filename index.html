@@ -26,20 +26,34 @@
       <div class="weather-app">
         <form>
           <div class="searchForm">
-            <input
-              type="text"
-              class="search-form"
-              placeholder="Choose your city"
-              id="your-city"
-              autocomplete="off"
-              autofocus="on"
-            />
-            <button type="submit" class="btn btn-primary" id="search-button">
-              Search
-            </button>
-            <button type="submit" class="btn btn-primary" id="current-button">
-              Current
-            </button>
+            <div class="row">
+              <div class="col-6">
+                <input
+                  type="text"
+                  class="form-control"
+                  placeholder="Choose your city"
+                  id="your-city"
+                  autocomplete="off"
+                  autofocus="on"
+                />
+              </div>
+              <div class="col-6">
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="search-button"
+                >
+                  Search
+                </button>
+                <button
+                  type="submit"
+                  class="btn btn-primary"
+                  id="current-button"
+                >
+                  Current
+                </button>
+              </div>
+            </div>
           </div>
         </form>
         <h1>
@@ -50,20 +64,19 @@
         </h2>
         <h3>
           <div class="row">
-            <div class="col-6 col-md-4">
+            <div class="col-6">
               <span class="weather" id="current-temperature">-3</span>
               <span class="units">
                 <a href="#" id="celsius-link">℃</a> |
                 <a href="#" id="fahrenheit-link">℉</a>
               </span>
               <img src="" alt="" class="weather" id="icon" />
+              <div class="weather" id="current-weather">partly cloudy</div>
+            </div>
 
-              <span class="weather" id="current-weather">partly cloudy</span>
-            </div>
-            <div class="col-6 col-md-4">
+            <div class="col-6">
               wind speed: <span class="weather" id="current-wind">3</span>m/s
-            </div>
-            <div class="col-6 col-md-4">
+              <br />
               humidity: <span class="weather" id="current-humidity">80</span>%
             </div>
           </div>
