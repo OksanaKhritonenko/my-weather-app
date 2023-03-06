@@ -58,6 +58,11 @@ function getDataFromUrl(apiUrl) {
       setWeather(response.data.weather[0].description);
       setHumidity(response.data.main.humidity);
       setWind(response.data.wind.speed);
+      let weatherIcon = document.querySelector("#icon");
+      weatherIcon.setAttribute(
+        "src",
+        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
+      );
     })
     .catch(showError);
 }
