@@ -28,3 +28,13 @@ p {
 a {
   color: #0881a3;
 }
+.weather-temperature img {
+  margin-right: 10px;
+  height: 100px;
+  width: 100px;
+}
+.weather-temperature strong {
+  font-size: 100px;
+  line-height: 1;
+  font-weight: 400;
+}
