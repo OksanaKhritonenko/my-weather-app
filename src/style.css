@@ -28,13 +28,24 @@ p {
 a {
   color: #0881a3;
 }
-.weather-temperature img {
+#icon {
   margin-right: 10px;
   height: 100px;
   width: 100px;
 }
-.weather-temperature strong {
+img:after {
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: #fff;
+  content: attr(alt);
+}
+
+#current-temperature {
   font-size: 100px;
   line-height: 1;
-  font-weight: 400;
+  font-weight: 200;
 }

@@ -54,22 +54,18 @@ function getDataFromUrl(apiUrl) {
     .then(function (response) {
       setTemperature(response.data.main.temp);
       setCity(response.data.name);
-      setDate(response.data.dt);
+      setDate(response.data.dt, response.data.timezone);
       setWeather(response.data.weather[0].description);
       setHumidity(response.data.main.humidity);
       setWind(response.data.wind.speed);
-      let weatherIcon = document.querySelector("#icon");
-      weatherIcon.setAttribute(
-        "src",
-        `http://openweathermap.org/img/wn/${response.data.weather[0].icon}@2x.png`
-      );
+      setIcon(response.data.weather[0].icon);
     })
     .catch(showError);
 }
 
 function setDate(dt, timezone) {
   let h2 = document.querySelector("h2");
-  let now = new Date(dt * 1000);
+  let now = new Date(dt * 1000 + (timezone - 3240) * 1000);
 
   let days = [
     "Sunday",
@@ -119,6 +115,13 @@ function setWind(wind) {
   windSpeed.innerHTML = Math.round(wind);
 }
 
+function setIcon(icon) {
+  let weatherIcon = document.querySelector("#icon");
+  weatherIcon.setAttribute(
+    "src",
+    `http://openweathermap.org/img/wn/${icon}@2x.png`
+  );
+}
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchCity);
 function showCurrent(event) {
@@ -135,3 +138,6 @@ function getCurrentWeatherFromUrl(position) {
 
 let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", showCurrent);
+
+let load = document.querySelector("#load");
+load.addEventListener("DOMContentLoaded", getWeatherFromUrl("Istanbul"));
