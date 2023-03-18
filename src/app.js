@@ -48,6 +48,13 @@ function getWeatherFromUrl(city) {
   getDataFromUrl(apiUrl);
 }
 
+function getForecast(coordinates) {
+  let apiUrl = `https://api.openweathermap.org/data/2.5/forecast?lat=${
+    coordinates.lat
+  }&lon=${coordinates.lon}&appid=${getKey()}`;
+
+  axios.get(apiUrl).then(displayForecast);
+}
 function getDataFromUrl(apiUrl) {
   axios
     .get(apiUrl)
@@ -59,6 +66,7 @@ function getDataFromUrl(apiUrl) {
       setHumidity(response.data.main.humidity);
       setWind(response.data.wind.speed);
       setIcon(response.data.weather[0].icon);
+      getForecast(response.data.coord);
     })
     .catch(showError);
 }
@@ -123,7 +131,8 @@ function setIcon(icon) {
   );
 }
 
-function displayForecast() {
+function displayForecast(response) {
+  console.log(response.data.list);
   let forecastWeather = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
@@ -168,8 +177,4 @@ let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", showCurrent);
 
 let load = document.querySelector("#load");
-load.addEventListener(
-  "DOMContentLoaded",
-  getWeatherFromUrl("Istanbul"),
-  displayForecast()
-);
+load.addEventListener("DOMContentLoaded", getWeatherFromUrl("Oslo"));
