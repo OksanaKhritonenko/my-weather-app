@@ -125,9 +125,15 @@ function setIcon(icon) {
 
 function displayForecast() {
   let forecastWeather = document.querySelector("#forecast");
-  forecastWeather.innerHTML = `<div class="row">
+
+  let forecastHTML = `<div class="row">`;
+  let days = ["Sat", "Sun", "Mon"];
+  days.forEach(function (day) {
+    forecastHTML =
+      forecastHTML +
+      `
             <div class="col-2">
-              <div class="forecast-day" id="forecastDay">Today</div>
+              <div class="forecast-day">${day}</div>
               <div class="forecast-temperature">
                 <span class="forecastMaxTemp">2 </span
                 ><span class="forecastMinTemp">-4</span>
@@ -136,11 +142,12 @@ function displayForecast() {
           src="http://openweathermap.org/img/wn/50d@2x.png"
           alt=""
           width="42"
-        />
-              <div class="forecast-wind">3</div>
-              m/s
-            </div>
+        />                    
           </div>`;
+  });
+
+  forecastHTML = forecastHTML + `</div>`;
+  forecastWeather.innerHTML = forecastHTML;
 }
 
 let searchButton = document.querySelector("#search-button");
