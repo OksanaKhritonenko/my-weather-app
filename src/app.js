@@ -122,6 +122,27 @@ function setIcon(icon) {
     `http://openweathermap.org/img/wn/${icon}@2x.png`
   );
 }
+
+function displayForecast() {
+  let forecastWeather = document.querySelector("#forecast");
+  forecastWeather.innerHTML = `<div class="row">
+            <div class="col-2">
+              <div class="forecast-day" id="forecastDay">Today</div>
+              <div class="forecast-temperature">
+                <span class="forecastMaxTemp">2 </span
+                ><span class="forecastMinTemp">-4</span>
+              </div>
+              <img
+          src="http://openweathermap.org/img/wn/50d@2x.png"
+          alt=""
+          width="42"
+        />
+              <div class="forecast-wind">3</div>
+              m/s
+            </div>
+          </div>`;
+}
+
 let searchButton = document.querySelector("#search-button");
 searchButton.addEventListener("click", searchCity);
 function showCurrent(event) {
@@ -140,4 +161,8 @@ let currentButton = document.querySelector("#current-button");
 currentButton.addEventListener("click", showCurrent);
 
 let load = document.querySelector("#load");
-load.addEventListener("DOMContentLoaded", getWeatherFromUrl("Istanbul"));
+load.addEventListener(
+  "DOMContentLoaded",
+  getWeatherFromUrl("Istanbul"),
+  displayForecast()
+);
