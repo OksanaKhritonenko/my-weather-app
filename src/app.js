@@ -5,17 +5,49 @@ function convertUnit(event) {
     return;
   } else {
     let currentTemperature = document.querySelector("#current-temperature");
+    let forecastArray = [
+      document.querySelector("#forecast-temperature-max0"),
+      document.querySelector("#forecast-temperature-max1"),
+      document.querySelector("#forecast-temperature-max2"),
+      document.querySelector("#forecast-temperature-max3"),
+      document.querySelector("#forecast-temperature-max4"),
+      document.querySelector("#forecast-temperature-min0"),
+      document.querySelector("#forecast-temperature-min1"),
+      document.querySelector("#forecast-temperature-min2"),
+      document.querySelector("#forecast-temperature-min3"),
+      document.querySelector("#forecast-temperature-min4"),
+    ];
     let temperature = parseInt(currentTemperature.innerHTML, 10);
     let tempToDisplay;
     if (event.target.id === "fahrenheit-link") {
       currentLink = "fahrenheit-link";
-      tempToDisplay = Math.round(temperature * 1.8 + 32);
+      tempToDisplay = calculateFahrenheit(temperature);
+      forecastArray.forEach(
+        (forecast) =>
+          (forecast.innerHTML = calculateFahrenheit(
+            parseInt(forecast.innerHTML, 10)
+          ))
+      );
     } else if (event.target.id === "celsius-link") {
       currentLink = "celsius-link";
-      tempToDisplay = Math.round((temperature - 32) / 1.8);
+      tempToDisplay = calculateCelsius(temperature);
+      forecastArray.forEach(
+        (forecast) =>
+          (forecast.innerHTML = calculateCelsius(
+            parseInt(forecast.innerHTML, 10)
+          ))
+      );
     }
     currentTemperature.innerHTML = tempToDisplay;
   }
+}
+
+function calculateFahrenheit(temperature) {
+  return Math.round(temperature * 1.8 + 32);
+}
+
+function calculateCelsius(temperature) {
+  return Math.round((temperature - 32) / 1.8);
 }
 
 let celcius = document.querySelector("#celsius-link");
@@ -143,7 +175,7 @@ function displayForecast(response) {
   let forecastWeather = document.querySelector("#forecast");
 
   let forecastHTML = `<div class="row">`;
-
+  let forecastIndex = 0;
   forecast.forEach(function (forecastDay, index) {
     if (index === 0 || index % 8 === 0) {
       forecastHTML =
@@ -159,15 +191,17 @@ function displayForecast(response) {
           width="42"
         />
               <div class="forecast-temperature">
-                <span class="forecastMaxTemp">${Math.round(
-                  forecastDay.main.temp_max
-                )}° </span
-                ><span class="forecastMinTemp">${Math.round(
-                  forecastDay.main.temp_min
-                )}°</span>
+                <span class="forecastMaxTemp"   id="forecast-temperature-max${forecastIndex}">${Math.round(
+          forecastDay.main.temp_max
+        )}</span><span>° </span
+                ><span class="forecastMinTemp"   id="forecast-temperature-min${forecastIndex}">${Math.round(
+          forecastDay.main.temp_min
+        )}</span><span>°</span
+                >
               </div>
                                   
           </div>`;
+      forecastIndex = forecastIndex + 1;
     }
   });
 
