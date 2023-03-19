@@ -201,7 +201,7 @@ function displayForecast(response) {
               </div>
                                   
           </div>`;
-      forecastIndex = forecastIndex + 1;
+      forecastIndex += 1;
     }
   });
 
