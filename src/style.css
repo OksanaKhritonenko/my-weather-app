@@ -1,5 +1,5 @@
 .container {
-  max-width: 800px;
+  max-width: 650px;
   margin: 40px auto;
 }
 .weather-app {
@@ -40,13 +40,20 @@ img:after {
   background-color: #fff;
   content: attr(alt);
 }
+#celsius-link,
+#fahrenheit-link {
+  font-size: 20px;
+}
 
 #current-temperature {
-  font-size: 100px;
+  font-size: 70px;
   line-height: 1;
   font-weight: 200;
+}
+.weather {
 }
 
 .forecastWeather {
   text-align: center;
+  font-size: 20px;
 }
