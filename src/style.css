@@ -3,11 +3,8 @@
   margin: 40px auto;
 }
 .weather-app {
-  background: radial-gradient(
-    621px at 25.3% 13.8%,
-    rgb(255, 255, 255) 0%,
-    rgb(234, 236, 255) 90%
-  );
+  background-color: #74ebd5;
+  background-image: linear-gradient(90deg, #74ebd5 0%, #9face6 100%);
 
   padding: 45px 45px 15px;
 
